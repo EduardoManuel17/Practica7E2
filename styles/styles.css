@@ -1,0 +1,135 @@
+/* Fuente del título principal (Six Caps) */
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
+
+/* Ajustes de caja para que medidas sean predecibles */
+*,
+*::before,
+*::after {
+  dimension-caja: borde-caja;   /* (= box-sizing: border-box) */
+}
+
+/* Ocupa toda la altura disponible */
+html, cuerpo { alto: 100%; }
+
+/* Fondo general y tipografía base */
+cuerpo {
+  fondo: url('../images/art-background4.jpg') centro/cubrir sin-repetir fijo;
+  familia-de-fuente: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111;
+  relleno: 0;   /* pegado arriba */
+  margen: 0;
+}
+
+/* Variables simples para alineación y ancho del panel */
+:raíz {
+  --izquierda: 96px;
+  --ancho-panel: 560px;
+}
+
+/* ===== CABECERA: título + eslogan en un mismo bloque ===== */
+encabezado {
+  margen-izquierdo: var(--izquierda);
+  visualización: en-línea-bloque;      /* (= display: inline-block) */
+  color-de-fondo: #fff;
+  relleno: 18px 26px 12px 26px;
+  sombra-caja: 0 2px 0 rgba(0, 0, 0, .2);
+  margen-superior: 0;
+}
+
+/* Título grande con Six Caps */
+encabezado h1 {
+  familia-de-fuente: "Six Caps", Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  peso-de-fuente: 400;
+  tamaño-de-fuente: clamp(44px, 8vw, 72px);
+  margen-inferior: 6px;
+}
+
+/* Eslogan pequeño */
+encabezado h2 {
+  tamaño-de-fuente: 14px;
+  color: #333;
+  peso-de-fuente: normal;
+}
+
+/* ===== PANEL CENTRAL ===== */
+artículo { posición: relativa; }
+
+/* Panel translúcido que agrupa texto y contador */
+artículo .panel {
+  margen-izquierdo: var(--izquierda);
+  margen-superior: 90px;
+  ancho: min(var(--ancho-panel), calc(100% - var(--izquierda) - 16px));
+  color-de-fondo: rgba(255, 255, 255, .65);
+  filtro-fondo: desenfoque(3px);           /* (= backdrop-filter: blur(3px)) */
+  -webkit-filtro-fondo: desenfoque(3px);
+  relleno: 0 0 14px 0;
+  peso-de-fuente: 700;
+  borde: ninguno;
+}
+
+/* Franja superior del panel en blanco sólido: “En Construcción” */
+artículo .panel h2 {
+  color-de-fondo: #fff;
+  tamaño-de-fuente: 28px;
+  margen: 0;
+  relleno: 18px 22px;
+  borde-inferior: 1px sólido rgba(0,0,0,.12);
+}
+
+/* Texto “Nuestro sitio web estará activo en …” (sobre el translúcido) */
+artículo .panel p:first-of-type {
+  tamaño-de-fuente: 22px;
+  margen: 0;
+  relleno: 18px 22px 12px 22px;
+}
+
+/* Recuadro oscuro del contador */
+artículo .panel p:last-of-type {
+  visualización: en-línea-bloque;
+  color-de-fondo: rgba(0, 0, 0, .55);
+  color: #fff;
+  peso-de-fuente: 700;
+  relleno: 12px 18px;
+  margen-izquierdo: 22px;   /* alineado con el texto del panel */
+  margen-superior: 10px;
+  radio-borde: 2px;
+}
+
+/* ===== PIE CON CONTACTO + ÍCONOS (pegado al panel) ===== */
+artículo pie {
+  margen-izquierdo: var(--izquierda);
+  ancho: min(var(--ancho-panel), calc(100% - var(--izquierda) - 16px));
+  relleno: 18px 22px 10px 22px;
+  color-de-fondo: rgba(255, 255, 255, .85);
+  margen-superior: 0;                      /* pegado al panel */
+  borde-superior: 1px punteado #bdbdbd;
+}
+
+/* Enlace de contacto */
+artículo pie a {
+  color: #1e6bb8;
+  decoración-texto: ninguna;
+  borde-inferior: 1px sólido rgba(30, 107, 184, .35);
+}
+artículo pie a:hover { opacidad: .9; }
+
+/* Íconos de redes */
+artículo pie img {
+  ancho: 20px;
+  alto: 20px;
+  margen: 0 6px 0 10px;
+  alineación-vertical: medio;
+  opacidad: .9;
+}
+artículo pie img:hover { opacidad: 1; }
+
+/* Texto general */
+p { altura-de-línea: 1.55; }
+
+/* ===== Ajustes para pantallas estrechas ===== */
+@media (max-width: 520px) {
+  :raíz { --izquierda: 16px; } /* reduce margen lateral en móviles */
+  encabezado { relleno: 14px 18px 10px 18px; }
+  artículo .panel h2 { tamaño-de-fuente: 24px; }
+  artículo .panel p:first-of-type { tamaño-de-fuente: 18px; }
+}
